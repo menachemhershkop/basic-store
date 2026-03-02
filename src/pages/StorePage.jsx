@@ -1,12 +1,13 @@
 import React from 'react'
 import Card from '../cumponents/Card'
-import product from '../data/products.json'
+// import product from '../data/products.json'
 import Description from '../cumponents/Description';
 import { useCard } from '../state/useCard';
 import Inc from '../cumponents/inc';
-
+import { useProduct } from '../state/useProduct';
 function StorePage() {
   
+  const {product} = useProduct()
   
   return (
     <div>

@@ -1,10 +1,11 @@
 import React from 'react'
+import { useMoney } from '../state/useMoney'
 
 function BuyCard(props) {
       const {removeGelt} = useMoney()
       
   return (
-       <div className='product-content'>
+    <div className='product-content'>
       <p className='category'>{props.category}</p>
       <h2>{props.name}</h2>
       <p>{props.description}</p>

@@ -2,12 +2,18 @@ import React, { useState } from 'react'
 import Description from '../cumponents/Description'
 import { useMoney } from '../state/useMoney'
 import { useCard } from '../state/useCard'
+import BuyCard from '../cumponents/BuyCard'
+import { useProduct } from '../state/useProduct'
 
 
 function CardPage() {
   const [stock, setStock] = useState(false)
   const {gelt, addGelt, removeGelt, reset} = useMoney()
   const {items} = useCard()
+
+
+ 
+  
   return (
     <div>
        <Description note={"Cart route"} title={"Your shopping cart"} desc={"This page reads the same global state as the product cards, so changes from one route are visible in the other route immediately."}/>
@@ -21,6 +27,7 @@ function CardPage() {
        {/* <button onClick={()=>addGelt(30)}>add gelt</button>
        <button onClick={()=>removeGelt(12)}>remove</button> */}
        <button className='add' onClick={()=>reset()}>clear cart</button></div>
+       <BuyCard category={"sad"} name={'abc'} description={"dcasc"} price={"100"}/>
        </section>
     </div>
   )
