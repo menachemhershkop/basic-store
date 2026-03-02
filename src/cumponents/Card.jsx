@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useCard } from '../state/useCard';
+import { useMoney } from '../state/useMoney';
 
 function Card(props) {
   const [add, setAdd] = useState(true)
   const {inc, dec} = useCard();
+  const {addGelt, removeGelt} = useMoney()
   return (
     <div className='card'>
       <div className='image-product'>
@@ -14,8 +16,8 @@ function Card(props) {
       <h2>{props.name}</h2>
       <p>{props.description}</p>
       <p>${props.price}</p>
-      {add && <button onClick={()=>(setAdd(false), inc())}>Add to cart</button>}
-      {!add && <button onClick={()=>(setAdd(true), dec())}>Remove from cart</button>}
+      {add && <button className='add' onClick={()=>(setAdd(false), inc(), addGelt(props.price))}>Add to cart</button>}
+      {!add && <button className='remove' onClick={()=>(setAdd(true), dec(), removeGelt(props.price))}>Remove from cart</button>}
       </div>
     </div>
   )
