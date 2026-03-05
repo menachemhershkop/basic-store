@@ -5,8 +5,9 @@ import Description from '../cumponents/Description';
 import { useCard } from '../state/useCard';
 import Inc from '../cumponents/inc';
 import { useProduct } from '../state/useProduct';
+import { useBuy } from '../state/useBuy';
 function StorePage() {
-  
+    const buyList = useBuy((state)=> state.buyList)
   const {product} = useProduct()
   
   return (
@@ -14,8 +15,10 @@ function StorePage() {
       <Description note={"Exercise idea"} title={"Use global state to keep the cart in sync everywhere"} desc={"The products come from a JSON file, and both the shop page and the cart page read the same Zustand store."}/>
     <div className='cards'>
      {product.map((prod)=>{
+      const boghut = buyList.some((p)=>p.name===prod.name);
+      
       return (
-<Card name={prod.name} price={prod.price} category={prod.category} description={prod.description} image={prod.image}/>
+<Card key={prod.id} name={prod.name} price={prod.price} category={prod.category} description={prod.description} image={prod.image} boghut={boghut}/>
     )}) }</div>
     
     <Inc/>
